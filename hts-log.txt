@@ -1,0 +1,22 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 10 Feb 2026 23:07:46 at https://storage.googleapis.com/20fb208sjjsdfsdf/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://storage.googleapis.com/20fb208sjjsdfsdf/index.html -O1 "C:\My Web Sites\popup 10feb2026" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/signals/config/ (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/t (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/e (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/signals/plugins/ (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/schema.org/ (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/t.resolvedLink (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/o (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Forbidden" (403) at link https://storage.googleapis.com/signals/iwl.js (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Forbidden" (403) at link https://storage.googleapis.com/signals/iwl.js?pixel_id= (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/r.dl (from https://connect.facebook.net/en_US/fbevents.js)
+23:07:54	Error: 	"Not Found" (404) at link https://storage.googleapis.com/20fb208sjjsdfsdf/r.rl (from https://connect.facebook.net/en_US/fbevents.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 8 seconds : 18 links scanned, 6 files written (1074048 bytes overall) [827093 bytes received at 103386 bytes/sec], 355863 bytes transferred using HTTP compression in 1 files, ratio 26%
+(11 errors, 0 warnings, 0 messages)
