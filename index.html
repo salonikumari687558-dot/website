@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Hydraulics: The Future of Industrial Efficiency | ASN Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; font-family: 'Mulish', sans-serif;}
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #4b5563; font-size: 1.1rem; }
+        .reading-progress { height: 4px; background: #2563eb; position: fixed; top: 0; left: 0; z-index: 100; transition: width 0.1s; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Mobile Menu Animation */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        .mobile-menu-open { transform: translateX(0) !important; }
+        
+        /* Desktop Dropdown Hover */
+        .group:hover .group-hover\:block { display: block; } 
+   </style>
+</head>
+<body class="bg-slate-50">
+
+    <div id="progress-bar" class="reading-progress" style="width: 0%"></div>
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-slate-700">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+                <div class="text-2xl font-black italic tracking-tighter text-blue-600">
+                    TRENDING<span class="text-black">SPOT</span>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-sm uppercase tracking-wide text-slate-600">
+                <a href="blog-details.html" class="hover:text-blue-600 transition">Home</a>
+                
+                <div class="relative group cursor-pointer py-4">
+                    <span class="hover:text-blue-600 flex items-center gap-1">
+                        Categories <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </span>
+                    <div class="hidden group-hover:block absolute top-full left-0 w-56 bg-white border border-slate-100 shadow-xl rounded-xl p-2 mt-0">
+                        <a href="blog-details.html" class="block px-4 py-3 hover:bg-blue-50 rounded-lg text-slate-800 transition">Hydraulic Pumps</a>
+                        <a href="blog-details.html" class="block px-4 py-3 hover:bg-blue-50 rounded-lg text-slate-800 transition">Control Valves</a>
+                        <a href="blog-details.html" class="block px-4 py-3 hover:bg-blue-50 rounded-lg text-slate-800 transition">Repair Guides</a>
+                        <a href="blog-details.html" class="block px-4 py-3 hover:bg-blue-50 rounded-lg text-slate-800 transition">Tech News</a>
+                    </div>
+                </div>
+
+                <a href="blog-details.html" class="hover:text-blue-600 transition">Trending</a>
+                <a href="blog-details.html" class="hover:text-blue-600 transition">Shop</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center bg-slate-100 rounded-full px-4 py-2 border border-slate-200">
+                    <i class="fa-solid fa-search text-slate-400 mr-2 text-sm"></i>
+                    <input type="text" placeholder="Search stories..." class="bg-transparent outline-none text-xs w-32 focus:w-48 transition-all">
+                </div>
+                <button class="bg-black text-white px-5 py-2.5 rounded-full text-xs font-black uppercase tracking-tighter shadow-lg shadow-slate-200">Subscribe</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-overlay" onclick="toggleMobileMenu()" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
+    <div id="mobile-menu" class="fixed top-0 left-0 w-[80%] h-full bg-white z-[70] shadow-2xl -translate-x-full overflow-y-auto">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <div class="text-xl font-black italic text-blue-600">TRENDING<span class="text-black">SPOT</span></div>
+                <button onclick="toggleMobileMenu()" class="text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="flex items-center bg-slate-100 rounded-xl px-4 py-3 mb-8">
+                <i class="fa-solid fa-search text-slate-400 mr-3"></i>
+                <input type="text" placeholder="Search articles..." class="bg-transparent outline-none w-full text-sm">
+            </div>
+
+            <div class="space-y-4">
+                <a href="index.html" class="block text-lg font-bold text-slate-800 border-b pb-2">Home</a>
+                
+                <div>
+                    <button onclick="toggleMobileDropdown()" class="flex items-center justify-between w-full text-lg font-bold text-slate-800 border-b pb-2">
+                        Categories <i id="dropdown-icon" class="fa-solid fa-chevron-down text-sm transition-transform"></i>
+                    </button>
+                    <div id="mobile-dropdown-content" class="hidden pl-4 mt-3 space-y-4 border-b">
+                        <a href="blog-details.html" class="block text-slate-600 font-semibold hover:text-blue-600">Hydraulic Pumps</a>
+                        <a href="blog-details.html" class="block text-slate-600 font-semibold hover:text-blue-600">Control Valves</a>
+                        <a href="blog-details.html" class="block text-slate-600 font-semibold hover:text-blue-600">Repair Tips</a>
+                        <a href="blog-details.html" class="block text-slate-600 font-semibold hover:text-blue-600">Case Studies</a>
+                    </div>
+                </div>
+
+                <a href="blog-details.html" class="block text-lg font-bold text-slate-800 border-b pb-2">Trending News</a>
+                <a href="blog-details.html" class="block text-lg font-bold text-slate-800 border-b pb-2">Technical Repair</a>
+                <a href="blog-details.html" class="block text-lg font-bold text-slate-800 border-b pb-2">Contact Us</a>
+            </div>
+
+            <div class="mt-12 pt-8 border-t">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Follow Us</p>
+                <div class="flex gap-4 text-slate-600 text-xl">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-white py-12 border-b">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Explore the Unexplored.</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">Insightful articles, creative stories, and trending topics—all in one spot.</p>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <button class="px-5 py-2 bg-blue-600 text-white rounded-full font-medium">All</button>
+                <button class="px-5 py-2 bg-gray-200 hover:bg-gray-300 rounded-full font-medium">Life Hacks</button>
+                <button class="px-5 py-2 bg-gray-200 hover:bg-gray-300 rounded-full font-medium">Tech Secrets</button>
+                <button class="px-5 py-2 bg-gray-200 hover:bg-gray-300 rounded-full font-medium">Celeb Drama</button>
+                <button class="px-5 py-2 bg-gray-200 hover:bg-gray-300 rounded-full font-medium">Money</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+        <br>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Tech Hacks</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">21 AI Life Hacks That Will Make You Feel Like You're Living in 2035</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Stop doing things manually like a caveman. These AI tools will save you 30+ hours a week...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>OCT 30, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>5 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-pink-600 uppercase tracking-wider">Celebrity Drama</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">The Truth Behind the Latest Viral Scandal: What They Aren't Telling You</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Insiders reveal the shocking decision that pushed everyone to their breaking point...</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>NOV 12, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+            <a href="blog-details.html"><article class="bg-white rounded-2xl overflow-hidden shadow-sm border card-hover">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80" alt="Thumbnail" class="w-full h-52 object-cover">
+                <div class="p-6">
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Money Secrets</span>
+                    <h3 class="text-xl font-extrabold mt-2 mb-3 leading-snug">How This 24-Year Old Saved $50k in One Year Without a Corporate Job</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">The financial strategy that big banks don't want you to know about. It's simpler than you think.</p>
+                    <div class="flex items-center text-xs text-gray-400 font-bold">
+                        <span>JAN 05, 2026</span>
+                        <span class="mx-2">•</span>
+                        <span>4 MIN READ</span>
+                    </div>
+                </div>
+            </article></a>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-8 mt-20">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div>
+                <div class="text-2xl font-black italic tracking-tighter text-blue-600 mb-6">
+                    TRENDING<span class="text-black">SPOT</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                    Hum aapke liye lekar aate hain duniya bhar ki trending stories, technical insights, aur life hacks. Quality content aur authentic news ka ek hi thikana.
+                </p>
+                <div class="flex gap-4">
+                    <a href="blog-details.html" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-600 hover:text-white transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="blog-details.html" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-pink-600 hover:text-white transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="blog-details.html" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-blue-400 hover:text-white transition">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="blog-details.html" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-red-600 hover:text-white transition">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-slate-900 uppercase tracking-widest text-xs mb-6">Quick Explore</h4>
+                <ul class="space-y-4 text-sm font-semibold text-slate-600">
+                    <li><a href="index.html" class="hover:text-blue-600 transition">Home</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Latest Stories</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Trending Now</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Popular Videos</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Editorial Picks</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-slate-900 uppercase tracking-widest text-xs mb-6">Top Categories</h4>
+                <ul class="space-y-4 text-sm font-semibold text-slate-600">
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Hydraulic Tech</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">AI & Future Tech</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Celebrity News</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Life Hacks</a></li>
+                    <li><a href="blog-details.html" class="hover:text-blue-600 transition">Money Secrets</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                <h4 class="font-bold text-slate-900 text-lg mb-2">Subscribe Karen!</h4>
+                <p class="text-slate-500 text-xs mb-6 font-medium">Koi bhi important update miss na karein. Direct inbox mein payein.</p>
+                <form class="space-y-3">
+                    <input type="email" placeholder="Apna email dalo" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-600 transition text-sm">
+                    <button class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-100 hover:bg-blue-700 transition uppercase text-xs tracking-tighter">
+                        Join Now
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="border-t border-slate-100 pt-8 flex flex-col md:row items-center justify-between gap-4">
+            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">
+                © 2026 Blogstreamer. All rights reserved.
+            </p>
+            <div class="flex gap-6 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                <a href="blog-details.html" class="hover:text-slate-900">Privacy Policy</a>
+                <a href="blog-details.html" class="hover:text-slate-900">Terms of Service</a>
+                <a href="blog-details.html" class="hover:text-slate-900">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Reading Progress Script
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            menu.classList.toggle('mobile-menu-open');
+            overlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        // Toggle Mobile Dropdown
+        function toggleMobileDropdown() {
+            const content = document.getElementById('mobile-dropdown-content');
+            const icon = document.getElementById('dropdown-icon');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>
